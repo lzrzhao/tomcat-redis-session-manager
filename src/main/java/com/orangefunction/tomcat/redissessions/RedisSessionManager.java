@@ -623,8 +623,8 @@ public class RedisSessionManager extends ManagerBase implements Lifecycle {
         log.trace("Save was determined to be unnecessary");
       }
 
-      log.trace("Setting expire timeout on session [" + redisSession.getId() + "] to " + getMaxInactiveInterval());
-      jedis.expire(binaryId, getMaxInactiveInterval());
+      log.trace("Setting expire timeout on session [" + redisSession.getId() + "] to " + getMaxInactiveInterval()*60);
+      jedis.expire(binaryId, getMaxInactiveInterval()*60);
 
       error = false;
 
